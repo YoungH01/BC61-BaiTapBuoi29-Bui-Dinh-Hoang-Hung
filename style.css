@@ -1,0 +1,7 @@
+#displayName{
+    transition: all 0.8s;
+}
+#displayName:hover{
+    color:red;
+    cursor: pointer;
+}

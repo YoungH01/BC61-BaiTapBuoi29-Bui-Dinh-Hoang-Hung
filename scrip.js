@@ -31,7 +31,7 @@ class Student extends Person{
       var b=Number(this.physic);
       var c=Number(this.chemistry);
       var ansScore= (a+b+c)/3.0;
-      console.log(ansScore);
+      return ansScore;
     }
 };
 class Employee extends Person{
@@ -49,7 +49,7 @@ class Employee extends Person{
         var a= Number(this.numberWork);
         var b=Number(this.salary);
         var ansSalary= a*b;
-        console.log(ansSalary);
+        return ansSalary;
     }
 };
 class Customer extends Person{
@@ -177,14 +177,37 @@ function renderUser(arr) {
         <td>${character.name}</td>
         <td>${character.email}</td>
         <td>${character.type}</td>
-        <td></td>
-        <td></td>
-        <td>
-          <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
-          <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
-        </td>
-      </tr>
     `;
+    if(character.type=="Student"){
+      var score=character.calculateScore();
+      content+=`
+      <td>${score}</td>
+      <td>0</td>
+      <td>
+        <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
+        <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
+      </td>
+    </tr>`
+    }else if(character.type=="Employee"){
+      var salary=character.calculateSalary();
+      content+=`
+      <td></td>
+      <td>${salary}</td>
+      <td>
+        <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
+        <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
+      </td>
+    </tr>`
+    }else{
+      content+=`
+      <td>0</td>
+      <td>0</td>
+      <td>
+        <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
+        <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
+      </td>
+    </tr>`
+    }
   }
   // dom tới tbody và đưa dữ liệu lên
   // console.log(content);
@@ -297,5 +320,21 @@ function deleteUser(maUser){
     }
   }
   renderUser(user.arrPerSon);
+}
+function sortForName(){
+  console.log("hello");
+  var arr= user.arrPerSon;
+  for (let i = 0; i < arr.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j].name < arr[minIndex].name) {
+        minIndex = j;
+      }
+    }
+    if (minIndex !== i) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    }
+  }
+  renderUser(arr);
 }
 
