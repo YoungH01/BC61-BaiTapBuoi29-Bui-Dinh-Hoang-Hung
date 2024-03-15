@@ -180,7 +180,7 @@ function renderUser(arr) {
         <td></td>
         <td></td>
         <td>
-          <button onclick="deleteSinhVien('')" class="btn btn-danger me-2">Xoá</button>
+          <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
           <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
         </td>
       </tr>
@@ -287,4 +287,15 @@ function updateInfo(){
   renderUser(user.arrPerSon);
 }
 document.querySelector('.btn-dark').onclick = updateInfo;
+function deleteUser(maUser){
+  var arr= user.arrPerSon;
+  for(var i=0;i<arr.length;i++){
+    var item=arr[i];
+    if(item.code==maUser){
+      user.arrPerSon.splice(i,1);
+      break;
+    }
+  }
+  renderUser(user.arrPerSon);
+}
 
