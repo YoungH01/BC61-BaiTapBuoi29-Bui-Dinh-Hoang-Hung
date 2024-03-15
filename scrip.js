@@ -1,4 +1,5 @@
 var typeUser= document.querySelector("#loaiNguoi");
+var sortLoaiNguoi=document.querySelector("#sortLoaiNguoi");
 var value1= document.querySelector("#value1");
 var value2=document.querySelector("#value2");
 var value3=document.querySelector("#value3");
@@ -336,5 +337,19 @@ function sortForName(){
     }
   }
   renderUser(arr);
+}
+function sortForType(){
+  var arr= user.arrPerSon;
+  var newArr=[]
+  for(var i=0;i<arr.length;i++){
+    var item=arr[i];
+    if(item.type==sortLoaiNguoi.value){
+      newArr.push(item);
+    }
+  }
+  if(sortLoaiNguoi.value=="Student" ||sortLoaiNguoi.value=="Employee") renderUser(newArr);
+  else{
+    
+  }
 }
 

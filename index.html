@@ -55,7 +55,7 @@
           <!-- loại sinh viên  -->
           <div class="col-6">
             <div class="mb-3">
-              <label for="loaiSinhVien" class="form-label">Loại người</label>
+              <label for="loaiNguoi" class="form-label">Loại người</label>
               <select class="form-select form-select-lg" id="loaiNguoi" onchange="chooseType()">
                 <option selected>Lựa chọn loại người</option>
                 <option value="Student">Student</option>
@@ -106,6 +106,17 @@
     </div>
     <!-- table  -->
     <div class="mt-5">
+      <div class=" d-flex justify-content-end">
+        <div class="mb-3 d-flex" style="height:46px">
+          <!-- <label for="loaiSinhVien" class="form-label">Lọc danh sách theo loại người</label> -->
+          <select class="form-select form-select-lg" id="sortLoaiNguoi" onchange="sortForType()">
+            <option selected>lọc danh sách theo loại người</option>
+            <option value="Student">Student</option>
+            <option value="Employee">Employee</option>
+            <option value="Customer">Customer</option>
+          </select>
+        </div>
+      </div>
       <table class="table table-dark">
         <thead>
           <tr>
