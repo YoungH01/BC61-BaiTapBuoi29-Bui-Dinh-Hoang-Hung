@@ -184,6 +184,7 @@ function renderUser(arr) {
       content+=`
       <td>${score}</td>
       <td>0</td>
+      <td></td>
       <td>
         <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
         <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
@@ -192,8 +193,9 @@ function renderUser(arr) {
     }else if(character.type=="Employee"){
       var salary=character.calculateSalary();
       content+=`
-      <td></td>
+      <td>0</td>
       <td>${salary}</td>
+      <td></td>
       <td>
         <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
         <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
@@ -203,6 +205,7 @@ function renderUser(arr) {
       content+=`
       <td>0</td>
       <td>0</td>
+      <td></td>
       <td>
         <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
         <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
@@ -347,9 +350,40 @@ function sortForType(){
       newArr.push(item);
     }
   }
-  if(sortLoaiNguoi.value=="Student" ||sortLoaiNguoi.value=="Employee") renderUser(newArr);
-  else{
-    
+  if(sortLoaiNguoi.value=="Student" ||sortLoaiNguoi.value=="Employee"){
+    document.getElementById("nameFunction1").innerHTML="Điểm trung bình";
+    document.getElementById("nameFunction2").innerHTML="Tiền lương";
+    document.getElementById("nameFunction3").innerHTML="";
+    renderUser(newArr);
+  }
+  if(sortLoaiNguoi.value=="Customer"){
+    document.getElementById("nameFunction1").innerHTML="Tên công ty";
+    document.getElementById("nameFunction2").innerHTML="Giá trị hoá đơn";
+    document.getElementById("nameFunction3").innerHTML="đánh giá";
+    var content = '';
+  // chạy vòng lặp duyệt qua dữ liệu
+  for (var i = 0; i < newArr.length; i++) {
+    // log và kiểm tra cấu trúc object đang được đưa lên giao diện
+    var character = newArr[i];
+    content += `
+      <tr>
+        <td>${character.code}</td>
+        <td>${character.name}</td>
+        <td>${character.email}</td>
+        <td>${character.type}</td>
+        <td>${character.nameCompany}</td>
+        <td>${character.invoice}</td>
+        <td>${character.evaluate}</td>
+        <td>
+        <button onclick="deleteUser('${character.code}')" class="btn btn-danger me-2">Xoá</button>
+        <button class="btn btn-warning" onclick="getInfo('${character.code}')">Sửa</button>
+        </td>
+      </tr>
+    `;
+  }
+  // dom tới tbody và đưa dữ liệu lên
+  // console.log(content);
+  document.querySelector('tbody').innerHTML = content;
   }
 }
 
