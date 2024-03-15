@@ -1,1 +1,146 @@
+<!doctype html>
+<html lang="en">
 
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Quản lý học viện nghiên cứu  & giảng dạy</h1>
+    <!-- form  -->
+    <div>
+      <form>
+        <div class="row">
+          <!-- mã sinh viên  -->
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="maWorker" class="form-label">Mã</label>
+              <input type="text" class="form-control" id="maWorker" aria-describedby="helpId"
+                placeholder="nhập mã số" />
+            </div>
+          </div>
+          <!-- tên sinh viên  -->
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="tenWorker" class="form-label">Họ và tên</label>
+              <input type="text" class="form-control" id="tenWorker" aria-describedby="helpId"
+                placeholder="nhập họ và tên" />
+            </div>
+          </div>
+          <!-- email  -->
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" aria-describedby="helpId" placeholder="nhập email" />
+            </div>
+          </div>
+          <!-- số điện thoại  -->
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="soDienThoai" class="form-label">Địa chỉ</label>
+              <input type="text" class="form-control" id="soDiaChi" aria-describedby="helpId"
+                placeholder="nhập địa chỉ" />
+            </div>
+          </div>
+          <!-- loại sinh viên  -->
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="loaiSinhVien" class="form-label">Loại người</label>
+              <select class="form-select form-select-lg" id="loaiNguoi" onchange="chooseType()">
+                <option selected>Lựa chọn loại người</option>
+                <option value="Student">Student</option>
+                <option value="Employee">Employee</option>
+                <option value="Customer">Customer</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6"></div>
+          <!-- điểm rèn luyện  -->
+          <!-- <div class="col-6">
+            <div class="mb-3">
+              <label for="diemRenLuyen" class="form-label">Điểm rèn luyện</label>
+              <input type="text" class="form-control" id="diemRenLuyen" aria-describedby="helpId"
+                placeholder="nhập điểm rèn luyện" />
+            </div>
+          </div> -->
+          <!-- điểm toán  -->
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="valueDescript1" class="form-label" id="value1">Điểm Toán</label>
+              <input type="text" class="form-control" id="valueDescript1" aria-describedby="helpId"
+                placeholder="nhập điểm toán" />
+            </div>
+          </div>
+          <!-- điểm lý  -->
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="valueDescript2" class="form-label" id="value2">Điểm Lý</label>
+              <input type="text" class="form-control" id="valueDescript2" aria-describedby="helpId"
+                placeholder="nhập điểm lý" />
+            </div>
+          </div>
+          <!-- điểm hoá  -->
+          <div class="col-4">
+            <div class="mb-3" id="input3">
+              <label for="valueDescript3" class="form-label" id="value3">Điểm Hoá</label>
+              <input type="text" class="form-control" id="valueDescript3" aria-describedby="helpId"
+                placeholder="nhập điểm hoá" />
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="button" class="btn btn-success me-2">Thêm</button>
+            <button type="button" class="btn btn-dark me-2">Cập nhật</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- table  -->
+    <div class="mt-5">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Mã số</th>
+            <th scope="col">Tên người dùng</th>
+            <th scope="col">Email</th>
+            <th scope="col">Loại người dùng</th>
+            <th scope="col">Điểm trung bình</th>
+            <th scope="col">Tiền lương</th>
+            <th scope="col">Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
+  <!-- axios cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+    integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="./scrip.js"></script>
+</body>
+
+</html>
