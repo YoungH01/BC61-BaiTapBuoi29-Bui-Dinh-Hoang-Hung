@@ -166,6 +166,9 @@ function getInfo(codeUser){
   document.getElementById('maWorker').readOnly = true;
 }
 function renderUser(arr) {
+  document.getElementById("nameFunction1").innerHTML="Điểm trung bình";
+  document.getElementById("nameFunction2").innerHTML="Tiền lương";
+  document.getElementById("nameFunction3").innerHTML="";
   var content = '';
   // chạy vòng lặp duyệt qua dữ liệu
   for (var i = 0; i < arr.length; i++) {
@@ -326,6 +329,9 @@ function deleteUser(maUser){
   renderUser(user.arrPerSon);
 }
 function sortForName(){
+  document.getElementById("nameFunction1").innerHTML="Điểm trung bình";
+    document.getElementById("nameFunction2").innerHTML="Tiền lương";
+    document.getElementById("nameFunction3").innerHTML="";
   console.log("hello");
   var arr= user.arrPerSon;
   for (let i = 0; i < arr.length - 1; i++) {
